@@ -130,22 +130,37 @@
   </section>
 
 
-<section class="hero">
+<style>
+  /* 浅 Epson 蓝背景的 hero section */
+  .hero.is-lightblue {
+    background-color: #e8edfa;  /* 非常浅的 Epson 蓝 */
+  }
+
+  /* 保证文本对比度合适 */
+  .hero.is-lightblue .section-subtitle {
+    color: #003399;  /* Epson 蓝 */
+  }
+
+  .hero.is-lightblue .caption {
+    color: #333;     /* 深灰，增强可读性 */
+  }
+</style>
+
+<section class="hero is-lightblue">
   <div class="container is-max-desktop">
     <div class="hero-body has-text-centered">
-      <h2 class="section-subtitle">Motivation
-
-</h2>
+      <h2 class="section-subtitle">Motivation</h2>
       <div class="media-row">
          
         <!-- 图片 -->
-         <div class="media-item">
+        <div class="media-item">
           <video controls autoplay muted loop playsinline>
             <source src="static/videos/tacdiffgood.MOV" type="video/mp4">
           </video>
           <p class="caption">
             TacDiffusion (ICRA 2025) <br>
-           Misalignment &lt; 2 mm <br> Clearance = 0.1 mm</p>
+            Misalignment &lt; 2 mm <br> Clearance = 0.1 mm
+          </p>
         </div>
 
         <!-- 第一个视频 -->
@@ -153,9 +168,10 @@
           <video controls autoplay muted loop playsinline>
             <source src="static/videos/tacdiff.MOV" type="video/mp4">
           </video>
-          <p class="caption">TacDiffusion (ICRA 2025) <br>
-            Misalignment &gt; 2 mm <br>  Clearance = 0.1 mm
-            </p>
+          <p class="caption">
+            TacDiffusion (ICRA 2025) <br>
+            Misalignment &gt; 2 mm <br> Clearance = 0.1 mm
+          </p>
         </div>
 
         <!-- 第二个视频 -->
@@ -163,14 +179,17 @@
           <video controls autoplay muted loop playsinline>
             <source src="static/videos/ours.MOV" type="video/mp4">
           </video>
-          <p class="caption"> <b>Ours</b>  <br>
-            Misalignment &gt; 2 mm <br>  Clearance = 0.1 mm</p>
+          <p class="caption">
+            <b>Ours</b> <br>
+            Misalignment &gt; 2 mm <br> Clearance = 0.1 mm
+          </p>
         </div>
 
       </div>
     </div>
   </div>
 </section>
+
 
 
 

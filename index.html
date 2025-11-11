@@ -384,7 +384,6 @@ of 34 mm, 0.2 mm clearance</p>
   </div>
 </section>
 
-
 <style>
   /* 三个媒体元素一行排列 */
   .media-row {
@@ -392,13 +391,18 @@ of 34 mm, 0.2 mm clearance</p>
     justify-content: center;
     align-items: flex-start;
     gap: 20px;               /* 元素之间的间距 */
-    flex-wrap: wrap;         /* 窗口变窄时自动换行 */
+    flex-wrap: nowrap;       /* 不换行 */
+    overflow-x: auto;        /* 小屏幕可横向滑动 */
+    padding-bottom: 10px;    /* 防止滚动条贴边 */
+    -webkit-overflow-scrolling: touch; /* 提升手机端滚动体验 */
   }
 
   /* 每个图片或视频的外框 */
   .media-item {
     text-align: center;
-    max-width: 30%;          /* 控制每个宽度 */
+    flex: 0 0 auto;          /* 防止被压缩 */
+    width: 30%;              /* 默认宽度 */
+    min-width: 180px;        /* 小屏幕下仍保持一定尺寸 */
   }
 
   .media-item img,
@@ -421,6 +425,7 @@ of 34 mm, 0.2 mm clearance</p>
     margin-top: 0.5em;
     color: #444;
   }
+
   .section-subtitle {
     font-size: 2.3rem;        /* 原本1.4rem → 放大约2倍 */
     font-weight: 800;
@@ -428,6 +433,19 @@ of 34 mm, 0.2 mm clearance</p>
     margin-bottom: 1em;
     text-align: center;
     letter-spacing: 1px;
+  }
+
+  /* 针对小屏幕（优化高度与比例） */
+  @media (max-width: 768px) {
+    .media-item {
+      width: 45%;             /* 适当放大单元以便阅读 */
+      min-width: 150px;
+    }
+
+    .media-item img,
+    .media-item video {
+      max-height: 220px;      /* 控制视频/图片高度 */
+    }
   }
 </style>
 

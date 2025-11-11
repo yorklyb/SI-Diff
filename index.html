@@ -146,40 +146,66 @@
   }
 </style>
 
-<section class="hero is-lightblue">
-  <div class="container is-max-desktop">
+  <!-- ===== Motivation Section ===== -->
+<section class="hero is-lightblue" style="
+  background-color: #eaf3fb;          /* 浅蓝背景 */
+  width: 100%;
+  padding: 3rem 1.5rem;
+">
+  <div class="container">
     <div class="hero-body has-text-centered">
-      <h2 class="section-subtitle">Motivation</h2>
-      <div class="media-row">
-         
+      <h2 class="section-subtitle" style="
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+      ">
+        Motivation
+      </h2>
+
+      <div class="media-row" style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+      ">
+
         <!-- 图片 -->
-        <div class="media-item">
-          <video controls autoplay muted loop playsinline>
+        <div class="media-item" style="
+          flex: 1 1 300px;
+          max-width: 320px;
+        ">
+          <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 12px;">
             <source src="static/videos/tacdiffgood.MOV" type="video/mp4">
           </video>
-          <p class="caption">
+          <p class="caption" style="margin-top: 0.5rem;">
             TacDiffusion (ICRA 2025) <br>
             Misalignment &lt; 2 mm <br> Clearance = 0.1 mm
           </p>
         </div>
 
         <!-- 第一个视频 -->
-        <div class="media-item">
-          <video controls autoplay muted loop playsinline>
+        <div class="media-item" style="
+          flex: 1 1 300px;
+          max-width: 320px;
+        ">
+          <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 12px;">
             <source src="static/videos/tacdiff.MOV" type="video/mp4">
           </video>
-          <p class="caption">
+          <p class="caption" style="margin-top: 0.5rem;">
             TacDiffusion (ICRA 2025) <br>
             Misalignment &gt; 2 mm <br> Clearance = 0.1 mm
           </p>
         </div>
 
         <!-- 第二个视频 -->
-        <div class="media-item">
-          <video controls autoplay muted loop playsinline>
+        <div class="media-item" style="
+          flex: 1 1 300px;
+          max-width: 320px;
+        ">
+          <video controls autoplay muted loop playsinline style="width: 100%; border-radius: 12px;">
             <source src="static/videos/ours.MOV" type="video/mp4">
           </video>
-          <p class="caption">
+          <p class="caption" style="margin-top: 0.5rem;">
             <b>Ours</b> <br>
             Misalignment &gt; 2 mm <br> Clearance = 0.1 mm
           </p>
@@ -189,6 +215,7 @@
     </div>
   </div>
 </section>
+
 
 
 
@@ -468,24 +495,26 @@ of 34 mm <br> 0.2 mm clearance</p>
 </style>
 
 
-  <!-- ===== Footer ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content has-text-centered">
-            <p>
-              This page was built using the 
-              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>,
-              adapted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. <br>
-              Licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-              Creative Commons Attribution-ShareAlike 4.0 International License</a>.
-            </p>
-          </div>
+<!-- ===== Footer ===== -->
+<footer class="footer" style="background-color: #f5f5f5; width: 100%;">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This page was built using the 
+            <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>,
+            adapted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page. <br>
+            Licensed under a 
+            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+            Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
 
 </body>
 </html>

@@ -1,6 +1,5 @@
 # SI-Diff: A Framework for Learning Search and High-Precision Insertion with a Force-Domain Diffusion Policy
 ## RA-L'26 & ICRA'27
-<br>
 [[ArXiv](https://arxiv.org/pdf/2605.12247)], [[Paper](https://ieeexplore.ieee.org/document/11520677)], [[Project Page](https://yorklyb.github.io/SI-Diff/)]
 
 ## From the Author

@@ -42,22 +42,57 @@ https://github.com/user-attachments/assets/f925b36f-ab02-45b1-942f-90a4ffa58dff
 
 
 
-
-
-
-
-
-
-
-
-
-
 ## Step 4: Diffusion Policy
 Our diffusion policy is built upon [Imitating-Human-Behaviour-w-Diffusion](https://github.com/microsoft/Imitating-Human-Behaviour-w-Diffusion) and [TacDiffusion](https://github.com/popnut123/TacDiffusion). We recommend first becoming familiar with these two works, then following the instructions in our paper to add the mode embedding layers.
 <br>
 <img width="1280" height="675" alt="network" src="https://github.com/user-attachments/assets/41b41210-d46c-482a-a2fb-d030394abb72" />
 <br>
+## Step 5: Model Training
+```python
+for ep in range(n_epoch):
+    dataload_train_0.sampler.set_epoch(ep)
+    dataload_train_1.sampler.set_epoch(ep)
 
+    model.train()
+    optim.param_groups[0]["lr"] = lrate * ((np.cos((ep / n_epoch) * np.pi) + 1) / 2)
+
+    pbar = zip(dataload_train_0, dataload_train_1)
+    if rank == 0:
+        pbar = tqdm(pbar, total=min(len(dataload_train_0), len(dataload_train_1)), desc=f"Epoch {ep}")
+
+    for (x0, y0), (x1, y1) in pbar:
+        # 1. Move tensors to the configured device asynchronously
+        x0 = x0.to(device, non_blocking=True).float()
+        y0 = y0.to(device, non_blocking=True).float()
+        x1 = x1.to(device, non_blocking=True).float()
+        y1 = y1.to(device, non_blocking=True).float()
+
+        # 2. Extract the mode prompt from the first dimension (index 0)
+        # Input shape: [B, 37] -> mode shape: [B], feature shape: [B, 36]
+        mode0 = x0[:, 0].long()       # Cast to long for the embedding layer
+        x0_feature = x0[:, 1:]        # Slice the remaining 36 dimensions for observations
+
+        mode1 = x1[:, 0].long()
+        x1_feature = x1[:, 1:]
+
+        # 3. Concatenate the dual-source data into a single balanced batch
+        x_batch = torch.cat([x0_feature, x1_feature], dim=0)  # Pure 36-dim observations
+        y_batch = torch.cat([y0, y1], dim=0)
+        mode_batch = torch.cat([mode0, mode1], dim=0)          # Combined mode prompts
+
+        # 4. Forward pass and loss computation
+        loss = model.module.loss_on_batch(x_batch, y_batch, mode_batch)
+        
+        # 5. Backward pass and optimization step
+        optim.zero_grad()
+        loss.backward()
+        optim.step()
+
+        if rank == 0:
+            pbar.set_description(f"train loss: {loss.item():.4f}")
+            writer.add_scalar('training_loss', loss.item(), global_step)
+            global_step += 1
+```
 
 ## Acknowledgments
 Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page.

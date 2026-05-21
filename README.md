@@ -33,6 +33,17 @@ Follow Algorithm 1 in our paper to design the teacher policy and collect trainin
 <br>
 <br>
 Our diffusion policy learns to predict robot action (**output**) from robot states (**input**). The action is the 6 DoF feedforward force (fx, fy, fz, mx, my, and mz). The robot state is 37-dimensional: the first value is the mode prompt, and the following 36 dimensions are identical to the observations in TacDiffusion. You can refer to the discussion [here](https://github.com/popnut123/TacDiffusion/issues/1) for details regarding the 36 dimension values.
+<br>
+<br>
+Once the teacher policy is ready, the robot can start searching. In the early stages, we manually created misalignments to collect data for the teacher policy. Later, we developed an automated data collection pipeline. It mirrors the evaluation process of the teacher policy, but only records successful demonstrations that meet our efficiency criteria (completed within 2 seconds). We kept running this until a sufficient number of expert demonstrations are collected.
+
+
+https://github.com/user-attachments/assets/f925b36f-ab02-45b1-942f-90a4ffa58dff
+
+
+
+
+
 
 
 

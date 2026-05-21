@@ -21,7 +21,7 @@ https://github.com/user-attachments/assets/2835e665-05a5-4413-93c1-9be582d8a343
 
 
 ## Step 2: Feedforward-based Impedance Controller
-On top of the impedance controller, you need to further add a feedforward force term to the controller. You can start by designing the feedforward force using a simple pattern. For example, you can set fz as a sinusoidal signal and set fx, fy, mx, my, and mz to zero. Then, your robot should behave as shown in the following video. We provide one demonstration ([robot_action_train_demo.pkl](https://github.com/yorklyb/SI-Diff/blob/master/robot_action_train_demo.pkl) )in this repository to show what the training data look like.
+On top of the impedance controller, you need to further add a feedforward force term to the controller. You can start by designing the feedforward force using a simple pattern. For example, you can set fz as a sinusoidal signal and set fx, fy, mx, my, and mz to zero. Then, your robot should behave as shown in the following video. 
 
 
 
@@ -29,7 +29,7 @@ On top of the impedance controller, you need to further add a feedforward force 
 https://github.com/user-attachments/assets/cad28686-fe71-4c0c-8537-d256b0264181
 
 ## Step 3: Teacher Policy
-Follow Algorithm 1 in our paper to design the teacher policy and collect training data.
+Follow Algorithm 1 in our paper to design the teacher policy and collect training data. We provide one demonstration ([robot_action_train_demo.pkl](https://github.com/yorklyb/SI-Diff/blob/master/robot_action_train_demo.pkl) & [robot_state_train_demo.pkl](https://github.com/yorklyb/SI-Diff/blob/master/robot_state_train_demo.pkl)) in this repository to show what the training data look like.
 
 
 

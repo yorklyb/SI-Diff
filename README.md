@@ -29,7 +29,10 @@ On top of the impedance controller, you need to further add a feedforward force 
 https://github.com/user-attachments/assets/cad28686-fe71-4c0c-8537-d256b0264181
 
 ## Step 3: Teacher Policy
-Follow Algorithm 1 in our paper to design the teacher policy and collect training data. We provide one demonstration ([robot_action_train_demo.pkl](https://github.com/yorklyb/SI-Diff/blob/master/robot_action_train_demo.pkl) & [robot_state_train_demo.pkl](https://github.com/yorklyb/SI-Diff/blob/master/robot_state_train_demo.pkl)) in this repository to show what the training data look like. Our diffusion policy learns to predict robot action (**output**) from robot states (**input**). The action is the 6 DoF feedforward force (fx, fy, fz, mx, my, and mz). The robot state is 37-dimensional: the first value is the mode prompt, and the following 36 dimensions are identical to the observations in TacDiffusion. You can refer to the discussion [here](https://github.com/popnut123/TacDiffusion/issues/1) for details regarding the 36 dimension values.
+Follow Algorithm 1 in our paper to design the teacher policy and collect training data. We provide one demonstration ([robot_action.pkl](https://github.com/yorklyb/SI-Diff/blob/master/robot_action_train_demo.pkl) & [robot_state.pkl](https://github.com/yorklyb/SI-Diff/blob/master/robot_state_train_demo.pkl)) in this repository to show what the training data look like. 
+<br>
+<br>
+Our diffusion policy learns to predict robot action (**output**) from robot states (**input**). The action is the 6 DoF feedforward force (fx, fy, fz, mx, my, and mz). The robot state is 37-dimensional: the first value is the mode prompt, and the following 36 dimensions are identical to the observations in TacDiffusion. You can refer to the discussion [here](https://github.com/popnut123/TacDiffusion/issues/1) for details regarding the 36 dimension values.
 
 
 

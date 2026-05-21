@@ -48,6 +48,7 @@ Our diffusion policy is built upon [Imitating-Human-Behaviour-w-Diffusion](https
 <img width="1280" height="675" alt="network" src="https://github.com/user-attachments/assets/41b41210-d46c-482a-a2fb-d030394abb72" />
 <br>
 ## Step 5: Model Training
+Since the model needs to learn two modes simultaneously, and the data distribution between the two modes is imbalanced, we recommend using the BBS technique. The following code briefly illustrates one training iteration process.
 ```python
 for ep in range(n_epoch):
     dataload_train_0.sampler.set_epoch(ep)

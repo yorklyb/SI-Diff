@@ -96,5 +96,6 @@ for ep in range(n_epoch):
 ```
 
 ## Acknowledgments
-Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page.
+Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page. 
+We would like to thank the authors of [Imitating-Human-Behaviour-w-Diffusion](https://github.com/microsoft/Imitating-Human-Behaviour-w-Diffusion) and [TacDiffusion](https://github.com/popnut123/TacDiffusion) for their open-source contributions.
 

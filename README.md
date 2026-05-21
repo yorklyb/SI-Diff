@@ -34,6 +34,13 @@ Follow Algorithm 1 in our paper to design the teacher policy and collect trainin
 <br>
 Our diffusion policy learns to predict robot action (**output**) from robot states (**input**). The action is the 6 DoF feedforward force (fx, fy, fz, mx, my, and mz). The robot state is 37-dimensional: the first value is the mode prompt, and the following 36 dimensions are identical to the observations in TacDiffusion. You can refer to the discussion [here](https://github.com/popnut123/TacDiffusion/issues/1) for details regarding the 36 dimension values.
 
+
+
+
+
+
+
+
 ## Step 4: Diffusion Policy
 Our diffusion policy is built upon [Imitating-Human-Behaviour-w-Diffusion](https://github.com/microsoft/Imitating-Human-Behaviour-w-Diffusion) and [TacDiffusion](https://github.com/popnut123/TacDiffusion). We recommend first becoming familiar with these two works, then following the instructions in our paper to add the mode embedding layers.
 <br>

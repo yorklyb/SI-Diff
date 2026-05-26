@@ -98,6 +98,8 @@ for ep in range(n_epoch):
             writer.add_scalar('training_loss', loss.item(), global_step)
             global_step += 1
 ```
+## Modifications to FORGE
+[FORGE](https://noseworm.github.io/forge/) is an RL-based STOA competitor in our paper.
 
 ## Acknowledgments
 Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page. 

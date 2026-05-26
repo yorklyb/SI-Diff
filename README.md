@@ -99,7 +99,18 @@ for ep in range(n_epoch):
             global_step += 1
 ```
 ## Modifications to FORGE
-[FORGE](https://noseworm.github.io/forge/) is an RL-based STOA competitor in our paper.
+[FORGE](https://noseworm.github.io/forge/) is an RL-based STOA competitor in our paper. However, the released FORGE code cannot be directly used to learn peg-in-hole tasks with our objects. In particular, although the authors mention in the paper that a noisy estimate of the fixed part’s 6-DoF pose (which lies in SE(3)) is adopted as input to the model, we found that in their code implementation, the model only utilizes the 3-DoF translation component.<br>
+### FORGE paper <br>
+<img width="698" height="193" alt="image" src="https://github.com/user-attachments/assets/0b6e94a2-e99c-4c8f-9262-a2751ce2db6d" /> <br>
+### Released FORGE code <br>
+<img width="812" height="215" alt="image" src="https://github.com/user-attachments/assets/d7a314b2-cc0d-4805-87b9-370fce00c48b" /> <br>
+Fingertip refers to the end-effector. Please note that  pos does not represent a 6D pose, but rather a 3D position vector, while quat denotes the quaternion. 
+Namely, the released code implementation does not fully reproduce the algorithm described in the paper. This discrepancy is also reflected in how the “key points” are defined in the code. In their implementation, the key points defined on each object all lie on a single line. The training objective is to align the key points defined on the peg (<span style="color:blue">blue</span>) with those defined on the hole (green). Under this definition, orientation becomes meaningless, since two parallel lines (both perpendicular to the ground) differ only by translational error. We experimentally found that while this setup works for the cylinder-like pegs used in the paper, it fails for the cuboid peg, which requires additional constraints to properly guide alignment during insertion. <br>
+<img width="1163" height="495" alt="image" src="https://github.com/user-attachments/assets/bf6ca2da-509e-4bb7-808c-2f35941b5767" />
+
+<br>
+Therefore, we made the following two modifications to the FORGE code implementation.
+
 
 ## Acknowledgments
 Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page. 

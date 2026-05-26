@@ -105,11 +105,18 @@ for ep in range(n_epoch):
 ### Released FORGE code <br>
 <img width="812" height="215" alt="image" src="https://github.com/user-attachments/assets/d7a314b2-cc0d-4805-87b9-370fce00c48b" /> <br>
 Fingertip refers to the end-effector. Please note that  pos does not represent a 6D pose, but rather a 3D position vector, while quat denotes the quaternion. 
-Namely, the released code implementation does not fully reproduce the algorithm described in the paper. This discrepancy is also reflected in how the “key points” are defined in the code. In their implementation, the key points defined on each object all lie on a single line. The training objective is to align the key points defined on the peg (<span style="color:blue">blue</span>) with those defined on the hole (green). Under this definition, orientation becomes meaningless, since two parallel lines (both perpendicular to the ground) differ only by translational error. We experimentally found that while this setup works for the cylinder-like pegs used in the paper, it fails for the cuboid peg, which requires additional constraints to properly guide alignment during insertion. <br>
+Namely, the released code implementation does not fully reproduce the algorithm described in the paper. This discrepancy is also reflected in how the “key points” are defined in the code. In their implementation, the key points defined on each object all lie on a single line. The training objective is to align the key points defined on the peg (blue) with those defined on the hole (green). Under this definition, orientation becomes meaningless, since two parallel lines (both perpendicular to the ground) differ only by translational error. We experimentally found that while this setup works for the cylinder-like pegs used in the paper, it fails for the cuboid peg, which requires additional constraints to properly guide alignment during insertion. <br>
 <img width="1163" height="495" alt="image" src="https://github.com/user-attachments/assets/bf6ca2da-509e-4bb7-808c-2f35941b5767" />
 
 <br>
-Therefore, we made the following two modifications to the FORGE code implementation.
+Therefore, we made the following two modifications to the FORGE code implementation. 
+<br>
+First, we revised the definition of key points, from colinear points to the four corners of a square, along with their normal direction. Please refer to the figure above. By comparing the two setups, we can see that orientation information becomes meaningful, as a specific orientation must be followed to align the key points, unlike in the previous setup. <br>
+Second, following the algorithm described in the FORGE paper, we added the orientation-related term fingertip_euler_rel_fixed, which represents the noisy estimate of the fixed part’s rotation, and modified the corresponding training and inference procedures accordingly. <br>
+<img width="1131" height="305" alt="image" src="https://github.com/user-attachments/assets/01a8cc33-723d-4841-abce-09095f80b971" />
+
+
+
 
 
 ## Acknowledgments
